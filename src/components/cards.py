@@ -2,7 +2,9 @@ import numpy as np
 import streamlit as st
 
 def render_cards_kpis(df):
-    
+    """
+        Cria todos os cards dos KPIs
+    """ 
     
     # ----- Calculos -----'
     total_faturamento = df["faturamento"].sum()
