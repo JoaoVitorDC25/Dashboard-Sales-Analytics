@@ -18,8 +18,8 @@ def filtros_sidebar(df):
     st.sidebar.header("Selecione os filtros desejados:")
     
     # ----- Filtro de Data -----
-    min_date = df['date'].min().date()
-    max_date = df['date'].max().date()
+    min_date = df["date"].min().date()
+    max_date = df["date"].max().date()
     
     date_range = st.sidebar.date_input(
         "Selecione o intervalo de datas:",
@@ -32,7 +32,7 @@ def filtros_sidebar(df):
     all_regioes = sorted(df["regiao"].unique())
     selected_regioes = st.sidebar.multiselect("Regiões", all_regioes, default = all_regioes)
     
-    all_categorias = sorted(df["categorias"].unique())
+    all_categorias = sorted(df["categoria"].unique())
     selected_categorias = st.sidebar.multiselect("Categorias", all_categorias, default = all_categorias)
     
     all_produtos = sorted(df["produto"].unique())
