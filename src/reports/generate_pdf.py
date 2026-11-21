@@ -19,7 +19,7 @@ def gera_pdf_report(df_filtrado, total_faturamento, total_quantidade, avg_ticket
     pdf.ln(5)
     
     pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 8, f"Gerado em: {datetime.now().strtime('%d/%m/%Y %H:%M')}", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 8, f"Gerado em: {datetime.now().strftime('%d/%m/%Y %H:%M')}", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     
     # ----- Resumo de KPIs -----
     pdf.set_fill_color(240,240,240)
@@ -29,15 +29,15 @@ def gera_pdf_report(df_filtrado, total_faturamento, total_quantidade, avg_ticket
     
     pdf.set_font("Helvetica", "B", 12)
     
-    pdf.cell(60, 8, f"Receita Total", alig="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
-    pdf.cell(60, 8, f"Quantidade", alig="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
+    pdf.cell(60, 8, f"Receita Total", align="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
+    pdf.cell(60, 8, f"Quantidade", align="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
 
-    pdf.cell(60, 8, f"Ticket Medio", alig="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(60, 8, f"Ticket Medio", align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     
     pdf.set_font("Helvetica", "", 12)
-    pdf.cell(60, 8, f"R$ {total_faturamento:,.2f}", alig="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
-    pdf.cell(60, 8, f"{total_quantidade:,}", alig="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
-    pdf.cell(60, 8, f"R${avg_ticket:,.2f}", alig="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(60, 8, f"R$ {total_faturamento:,.2f}", align="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
+    pdf.cell(60, 8, f"{total_quantidade:,}", align="C", new_x=XPos.RIGHT, new_y=YPos.TOP)
+    pdf.cell(60, 8, f"R${avg_ticket:,.2f}", align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     
     pdf.ln(15)
     
@@ -45,7 +45,7 @@ def gera_pdf_report(df_filtrado, total_faturamento, total_quantidade, avg_ticket
     pdf.set_font("Helvetica", "B", 12)
     pdf.cell(0,8, "Top 15 vendas (por receitas):", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     
-    col_widths = [30,30,30040,25,30]
+    col_widths = [30,30,30,40,25,30]
     headers = ["Data", "Regiao", "Categoria", "Produto", "Qtd", "Receita"]
     
     pdf.set_font("Helvetica", "B", 9)
@@ -63,7 +63,7 @@ def gera_pdf_report(df_filtrado, total_faturamento, total_quantidade, avg_ticket
         
         data = [
             str(row['date'].date()),
-            row['região'],
+            row['regiao'],
             row['categoria'],
             row['produto'][:20],
             str(row['quantidade']),
