@@ -1,6 +1,9 @@
 import streamlit as st
 
 def filtros_sidebar(df):
+    """
+        Cria todos os widgets da sidebar
+    """ 
     
     # ----- Banner Sidebar -----
     st.sidebar.markdown(
