@@ -14,7 +14,7 @@ def get_data_from_db():
      
      init_db(conn)  
      
-     df = pd.read_sql_query("SELECT * FROM tb_vendas", con0, parse_dates = ["dates"])
+     df = pd.read_sql_query("SELECT * FROM tb_vendas", conn, parse_dates = ["dates"])
      
      conn.close()
      
